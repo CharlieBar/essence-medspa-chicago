@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Essence Medspa – Advanced Aesthetics, Facials, Massage & Body Treatments</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'apple-gray': '#1d1d1f',
+            'apple-light-gray': '#86868b',
+            'apple-blue': '#007aff',
+            'apple-green': '#30d158',
+            'apple-purple': '#af52de',
+            'apple-pink': '#ff2d92',
+            'apple-bg': '#fbfbfd'
+          },
+          fontFamily: { apple: ['-apple-system','BlinkMacSystemFont','SF Pro Display','system-ui','sans-serif'] },
+          fontSize: { '7xl':'4.5rem','8xl':'6rem' }
+        }
+      }
+    }
+  </script>
+  <style>
+    body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    .apple-gradient{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%)}
+    .soft-gradient{background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%)}
+    .gentle-gradient{background:linear-gradient(135deg,#4facfe 0%,#00f2fe 100%)}
+    .apple-blur{backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+    .smooth-transition{transition:all .3s cubic-bezier(.25,.46,.45,.94)}
+    .hover-lift:hover{transform:translateY(-8px)}
+    .service-icon{width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center}
+    .fade-in{opacity:0;transform:translateY(30px);animation:fadeIn .8s ease-out forwards}
+    @keyframes fadeIn{to{opacity:1;transform:translateY(0)}}
+    .stagger-1{animation-delay:.1s}.stagger-2{animation-delay:.2s}.stagger-3{animation-delay:.3s}.stagger-4{animation-delay:.4s}
+    .hero-slider{position:relative;overflow:hidden;border-radius:36px;}
+    .hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1s ease;}
+    .hero-slide img{width:100%;height:100%;object-fit:cover;}
+    .hero-slide.is-active{opacity:1;}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(115deg,rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.25) 55%,rgba(0,0,0,0.05) 100%);}
+    .hero-badge{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(255,255,255,0.18);}
+    .stat-card{background:linear-gradient(135deg,rgba(255,255,255,0.75) 0%,rgba(255,255,255,0.45) 100%);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);}
+    .glow-card{background:linear-gradient(135deg,#fbf7ff 0%,#f0f7ff 100%);}
+
+    /* Flip */
+    .flip-card{perspective:1200px}
+    .flip-inner{transform-style:preserve-3d;transition:transform .8s ease}
+    .flip-front,.flip-back{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+    .flip-back{transform:rotateY(180deg)}
+    .is-flipped .flip-inner{transform:rotateY(180deg)}
+  </style>
+</head>
+<body class="bg-apple-bg text-apple-gray font-apple">
+  <!-- Nav -->
+  <nav class="fixed top-0 left-0 right-0 z-50 apple-blur bg-white/80 border-b border-gray-200/20">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="text-2xl font-semibold">Essence Medspa</div>
+      <div class="hidden md:flex items-center gap-6 text-apple-light-gray">
+        <a href="#home" class="hover:text-apple-gray smooth-transition">Home</a>
+        <a href="#facials" class="hover:text-apple-gray smooth-transition">Facials</a>
+        <a href="#aesthetics" class="hover:text-apple-gray smooth-transition">Advanced Aesthetics</a>
+        <a href="#massage" class="hover:text-apple-gray smooth-transition">Massage Therapy</a>
+        <a href="#body" class="hover:text-apple-gray smooth-transition">Body Treatments</a>
+      </div>
+      <a href="https://www.vagaro.com/essencemedspaandwellnesscenter/book-now" class="bg-apple-blue text-white px-5 py-2 rounded-full hover:bg-blue-600 smooth-transition">Book Now</a>
+    </div>
+  </nav>
+
+  <!-- Home -->
+  <section id="home" class="pt-28 px-6 pb-24 bg-apple-bg">
+    <div class="max-w-7xl mx-auto space-y-20">
+      <div class="relative hero-slider h-[520px] sm:h-[620px] lg:h-[660px]">
+        <div id="heroSlider" class="relative h-full">
+          <div class="hero-slide is-active"><img src="assets/images/hero/1920/medspa-hero (33)-1920w.webp" alt="Medspa treatment room with ambient lighting" loading="eager"/></div>
+          <div class="hero-slide"><img src="assets/images/hero/1920/medspa-hero (34)-1920w.webp" alt="Aesthetician performing advanced facial" loading="lazy"/></div>
+          <div class="hero-slide"><img src="assets/images/hero/1920/medspa-hero (36)-1920w.webp" alt="Relaxing spa lounge with modern design" loading="lazy"/></div>
+        </div>
+        <div class="hero-overlay rounded-[36px]"></div>
+        <div class="absolute inset-0 flex flex-col justify-center px-6 sm:px-12 lg:px-16 text-white">
+          <span class="hero-badge inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs sm:text-sm uppercase tracking-[0.35em] text-white/80">Essence Medspa</span>
+          <h2 class="mt-6 text-4xl sm:text-5xl lg:text-6xl font-light leading-tight max-w-3xl">Sculpted results, luminous skin and deeply restorative rituals tailored just for you.</h2>
+          <p class="mt-6 max-w-2xl text-lg sm:text-xl text-white/85">Discover concierge-level care with medical-grade technology, clean formulations and a curated team of advanced providers dedicated to your glow.</p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="https://www.vagaro.com/essencemedspaandwellnesscenter/book-now" class="inline-flex items-center gap-2 rounded-full bg-apple-blue px-6 py-3 text-base font-medium text-white shadow-lg shadow-blue-500/30 hover:bg-blue-600 smooth-transition">Book Your Glow
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#facials" class="inline-flex items-center gap-2 rounded-full border border-white/70 px-6 py-3 text-base font-medium text-white/90 hover:bg-white/15 smooth-transition">Explore Treatments</a>
+          </div>
+        </div>
+        <div class="absolute bottom-6 right-8 flex gap-2" id="heroIndicators">
+          <button data-hero-index="0" class="h-2.5 w-8 rounded-full bg-white/90 transition-all duration-300"></button>
+          <button data-hero-index="1" class="h-2.5 w-4 rounded-full bg-white/50 transition-all duration-300"></button>
+          <button data-hero-index="2" class="h-2.5 w-4 rounded-full bg-white/50 transition-all duration-300"></button>
+        </div>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="stat-card rounded-3xl p-6 shadow-lg border border-white/40">
+          <div class="flex items-center gap-3 text-apple-gray">
+            <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-r from-apple-purple to-apple-pink text-white">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V6a2 2 0 00-2-2H6a2 2 0 00-2 2v9z"/></svg>
+            </span>
+            <div>
+              <p class="text-sm uppercase tracking-[0.3em] text-apple-light-gray">Facials</p>
+              <p class="mt-1 text-2xl font-semibold">22 Signature Protocols</p>
+            </div>
+          </div>
+          <p class="mt-4 text-sm text-apple-light-gray">Custom-crafted journeys blending sculpting massage, clinical actives and restorative touch.</p>
+        </div>
+        <div class="stat-card rounded-3xl p-6 shadow-lg border border-white/40">
+          <div class="flex items-center gap-3 text-apple-gray">
+            <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-r from-apple-blue to-apple-green text-white">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"/><circle cx="12" cy="12" r="9"/></svg>
+            </span>
+            <div>
+              <p class="text-sm uppercase tracking-[0.3em] text-apple-light-gray">Advanced</p>
+              <p class="mt-1 text-2xl font-semibold">Clinical Technology</p>
+            </div>
+          </div>
+          <p class="mt-4 text-sm text-apple-light-gray">Jet Plasma, RF microneedling, regenerative injectables and tailored peel programs.</p>
+        </div>
+        <div class="stat-card rounded-3xl p-6 shadow-lg border border-white/40">
+          <div class="flex items-center gap-3 text-apple-gray">
+            <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-r from-apple-pink to-apple-purple text-white">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </span>
+            <div>
+              <p class="text-sm uppercase tracking-[0.3em] text-apple-light-gray">Wellness</p>
+              <p class="mt-1 text-2xl font-semibold">Massage & Body</p>
+            </div>
+          </div>
+          <p class="mt-4 text-sm text-apple-light-gray">From detoxifying scrubs to couples retreats, every touch is intentional and restorative.</p>
+        </div>
+        <div class="stat-card rounded-3xl p-6 shadow-lg border border-white/40">
+          <div class="flex items-center gap-3 text-apple-gray">
+            <span class="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-r from-apple-green to-apple-blue text-white">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 22a10 10 0 100-20 10 10 0 000 20z"/></svg>
+            </span>
+            <div>
+              <p class="text-sm uppercase tracking-[0.3em] text-apple-light-gray">Trust</p>
+              <p class="mt-1 text-2xl font-semibold">5-Star Rated Team</p>
+            </div>
+          </div>
+          <p class="mt-4 text-sm text-apple-light-gray">Expert providers with decades of combined experience in aesthetics, dermatology and spa wellness.</p>
+        </div>
+      </div>
+
+      <div class="grid gap-8 lg:grid-cols-2 items-center">
+        <div class="space-y-6">
+          <span class="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-xs uppercase tracking-[0.25em] text-apple-light-gray">Signature Experience</span>
+          <h3 class="text-3xl sm:text-4xl font-light text-apple-gray leading-snug">Elevated care that marries medical precision with a luxurious, calming touch.</h3>
+          <p class="text-apple-light-gray text-base sm:text-lg">From your first consult to post-treatment glow tips, we map every detail around your lifestyle, skin goals and comfort. Expect thoughtful amenities, curated playlists and time to breathe.</p>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="glow-card rounded-3xl p-5 border border-white">
+              <h4 class="text-lg font-semibold text-apple-gray">Concierge Booking</h4>
+              <p class="mt-2 text-sm text-apple-light-gray">Extended hours, online scheduling and a dedicated experience concierge.</p>
+            </div>
+            <div class="glow-card rounded-3xl p-5 border border-white">
+              <h4 class="text-lg font-semibold text-apple-gray">Curated Plan</h4>
+              <p class="mt-2 text-sm text-apple-light-gray">Layer facials, advanced aesthetics and body therapies for lasting transformation.</p>
+            </div>
+          </div>
+        </div>
+        <div class="relative">
+          <img src="assets/images/service/1200/medspa-service (15)-1200w.webp" alt="Specialist applying skincare treatment" class="w-full rounded-[32px] shadow-2xl object-cover" loading="lazy"/>
+          <div class="absolute -bottom-6 -right-4 sm:-right-10 w-48 sm:w-56 rounded-3xl bg-white p-4 shadow-xl border border-gray-100">
+            <p class="text-xs uppercase tracking-[0.3em] text-apple-light-gray">Loved By</p>
+            <p class="mt-2 text-2xl font-semibold text-apple-gray">3K+ Guests</p>
+            <p class="mt-1 text-xs text-apple-light-gray">Five-star rave reviews and glowing referrals from NYC to Philly.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-[32px] bg-gradient-to-r from-apple-purple/10 via-apple-blue/10 to-apple-green/10 border border-white/70 px-8 py-10 shadow-xl">
+        <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+          <div class="max-w-3xl">
+            <h3 class="text-3xl font-light text-apple-gray">Glow Society Membership</h3>
+            <p class="mt-3 text-apple-light-gray text-base sm:text-lg">Lock in monthly facials, member-only pricing on advanced treatments and surprise upgrades curated each season.</p>
+          </div>
+          <div class="flex flex-wrap gap-4">
+            <a href="https://www.vagaro.com/essencemedspaandwellnesscenter/book-now" class="inline-flex items-center gap-2 rounded-full bg-apple-blue px-6 py-3 text-white font-medium hover:bg-blue-600 smooth-transition">Join The Waitlist</a>
+            <a href="#facials" class="inline-flex items-center gap-2 rounded-full border border-apple-blue px-6 py-3 text-apple-blue font-medium hover:bg-apple-blue hover:text-white smooth-transition">View Facial Menu</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Header + Tabs -->
+  <header class="pt-28 px-6 text-center">
+    <div class="max-w-5xl mx-auto">
+      <h1 class="text-5xl md:text-7xl font-thin">Explore <span class="bg-gradient-to-r from-apple-purple to-apple-pink bg-clip-text text-transparent font-light">Treatments</span></h1>
+      <p class="mt-6 text-lg md:text-xl text-apple-light-gray">Apple-style cards that surface imagery, descriptions, highlights and easy booking in one view.</p>
+      <div class="mt-8 inline-flex rounded-full bg-white shadow border border-gray-200 overflow-hidden">
+        <button id="tabFacials" class="px-6 py-3 text-sm md:text-base font-medium bg-white">Facial Treatments</button>
+        <button id="tabAesthetics" class="px-6 py-3 text-sm md:text-base text-apple-light-gray hover:text-apple-gray smooth-transition">Advanced Aesthetics</button>
+        <button id="tabMassage" class="px-6 py-3 text-sm md:text-base text-apple-light-gray hover:text-apple-gray smooth-transition">Massage Therapy</button>
+        <button id="tabBody" class="px-6 py-3 text-sm md:text-base text-apple-light-gray hover:text-apple-gray smooth-transition">Body Treatments</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Facial Treatments -->
+  <section id="facials" class="px-6 pt-12 pb-24">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl md:text-5xl font-thin">Facial Treatments</h2>
+        <p class="mt-3 text-apple-light-gray">Custom facials, anti‑aging, hydration, resurfacing, microderm, Jet Plasma & more</p>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-3 mb-10">
+        <button data-filter-f="all" class="px-4 py-2 rounded-full border border-gray-200 bg-white text-sm">All</button>
+        <button data-filter-f="custom" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Custom</button>
+        <button data-filter-f="acne" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Acne / Deep Clean</button>
+        <button data-filter-f="brightening" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Brightening</button>
+        <button data-filter-f="anti" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Anti‑Aging / Firming</button>
+        <button data-filter-f="hydrate" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Hydration</button>
+        <button data-filter-f="peel" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Peels</button>
+        <button data-filter-f="microderm" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Microderm</button>
+        <button data-filter-f="oxygen-hydro" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Oxygen / Hydro</button>
+        <button data-filter-f="jet-plasma" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Jet Plasma</button>
+        <button data-filter-f="rf" class="px-4 py-2 rounded-full border border-gray-200 text-sm">RF Microneedling</button>
+        <button data-filter-f="teen" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Teen</button>
+        <button data-filter-f="eyes" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Eyes</button>
+      </div>
+
+      <div id="gridFacials" class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
+    </div>
+  </section>
+
+  <!-- Advanced Aesthetics -->
+  <section id="aesthetics" class="px-6 pt-12 pb-24 hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl md:text-5xl font-thin">Advanced Aesthetics</h2>
+        <p class="mt-3 text-apple-light-gray">Injectables, regenerative medicine, meso, IV therapy & more</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-3 mb-10">
+        <button data-filter-a="all" class="px-4 py-2 rounded-full border border-gray-200 bg-white text-sm">All</button>
+        <button data-filter-a="injectables" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Injectables</button>
+        <button data-filter-a="fillers" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Fillers</button>
+        <button data-filter-a="regenerative" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Regenerative (PRF/PRP)</button>
+        <button data-filter-a="iv" class="px-4 py-2 rounded-full border border-gray-200 text-sm">IV / Wellness</button>
+        <button data-filter-a="meso" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Meso</button>
+        <button data-filter-a="contouring" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Contouring</button>
+        <button data-filter-a="skin-therapy" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Skin Therapy</button>
+      </div>
+      <div id="gridAesthetics" class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
+    </div>
+  </section>
+
+  <!-- Massage Therapy -->
+  <section id="massage" class="px-6 pt-12 pb-24 hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl md:text-5xl font-thin">Massage Therapy</h2>
+        <p class="mt-3 text-apple-light-gray">Signature massages, specialty techniques, couples experiences</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-3 mb-10">
+        <button data-filter-m="all" class="px-4 py-2 rounded-full border border-gray-200 bg-white text-sm">All</button>
+        <button data-filter-m="swedish" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Swedish</button>
+        <button data-filter-m="deep" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Deep Tissue</button>
+        <button data-filter-m="hot-stone" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Hot Stone</button>
+        <button data-filter-m="bamboo" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Bamboo</button>
+        <button data-filter-m="cupping" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Cupping</button>
+        <button data-filter-m="prenatal" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Prenatal</button>
+        <button data-filter-m="athlete" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Athlete</button>
+        <button data-filter-m="thai" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Thai Herbal</button>
+        <button data-filter-m="reflexology" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Foot Reflexology</button>
+        <button data-filter-m="face-lifting" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Face Lifting</button>
+        <button data-filter-m="couples" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Couples</button>
+      </div>
+      <div id="gridMassage" class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
+    </div>
+  </section>
+
+  <!-- Body Treatments -->
+  <section id="body" class="px-6 pt-12 pb-24 hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl md:text-5xl font-thin">Body Treatments</h2>
+        <p class="mt-3 text-apple-light-gray">Back care, resurfacers, indulgent rituals & advanced Jet Plasma areas</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-3 mb-10">
+        <button data-filter-b="all" class="px-4 py-2 rounded-full border border-gray-200 bg-white text-sm">All</button>
+        <button data-filter-b="back-care" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Back Care</button>
+        <button data-filter-b="peel" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Peels</button>
+        <button data-filter-b="microderm" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Microderm</button>
+        <button data-filter-b="scrub" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Scrubs / Rituals</button>
+        <button data-filter-b="jet-plasma" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Jet Plasma</button>
+        <button data-filter-b="scalp" class="px-4 py-2 rounded-full border border-gray-200 text-sm">Scalp</button>
+      </div>
+      <div id="gridBody" class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="detailModal" class="fixed inset-0 bg-black/40 hidden items-end sm:items-center sm:justify-center z-[60]">
+    <div class="bg-white w-full sm:max-w-2xl rounded-t-3xl sm:rounded-3xl p-6 sm:p-8 shadow-2xl">
+      <div class="flex items-start justify-between gap-6">
+        <div>
+          <h3 id="modalTitle" class="text-2xl font-semibold"></h3>
+          <p id="modalMeta" class="text-apple-light-gray mt-1 text-sm"></p>
+        </div>
+        <button id="closeModal" class="text-apple-light-gray hover:text-apple-gray smooth-transition">✕</button>
+      </div>
+      <p id="modalDesc" class="mt-5 text-apple-gray leading-relaxed"></p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a id="modalBook" href="https://www.vagaro.com/essencemedspaandwellnesscenter/book-now" class="bg-apple-blue text-white px-5 py-3 rounded-full hover:bg-blue-600 smooth-transition">Book Now</a>
+        <a id="modalLearn" href="#" class="border border-apple-gray text-apple-gray px-5 py-3 rounded-full hover:bg-apple-gray hover:text-white smooth-transition">Learn More</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const BOOK_URL = 'https://www.vagaro.com/essencemedspaandwellnesscenter/book-now';
+
+    // FACIALS DATA
+    const FACIALS = [
+      {slug:'custom-facial', title:'Custom Facial – 50 Min', price:169, duration:'50 Min', tags:['Personalized','All Skin Types'], cats:['custom'], short:'A skincare symphony tailored to your skin goals.', desc:'Fully bespoke: cleanse, exfoliate, extractions, treatment mask + hydration. Designed for your current skin condition.', highlights:['Fully customized cleanse, exfoliation and mask for your skin goals', 'Balances tone, texture and hydration in a single visit', 'Perfect reset before events or seasonal changes'], learn:'/services/custom-facial'},
+      {slug:'acne-facial', title:'Acne Facial – 50 Min', price:159, duration:'50 Min', tags:['Blemish Care','ZO Stimulator Peel'], cats:['acne','peel'], short:'Breakout‑busting protocol for clearer skin.', desc:'Targets congestion with deep cleanse, sulfur mask and a gentle peel to reduce active acne and post‑breakout marks.', highlights:['Deep pore cleanse and sulfur mask calm active breakouts fast', 'Refines congestion without stripping sensitive skin', 'Helps fade post breakout marks for clearer tone'], learn:'/services/acne-facial'},
+      {slug:'deep-pore', title:'Deep Pore Cleansing – 50 Min', price:125, duration:'50 Min', tags:['Detox','Extractions'], cats:['acne'], short:'Spring cleaning for your pores.', desc:'Removes cellular debris + buildup with focused extractions to leave skin clarified and refreshed.', highlights:['Focused extractions lift stubborn congestion and buildup', 'Detox massage boosts microcirculation for refreshed glow', 'Ideal maintenance facial for oily or combination skin'], learn:'/services/deep-pore-cleansing'},
+      {slug:'brightening', title:'Brightening Facial – 50 Min', price:155, duration:'50 Min', tags:['Vitamin C','Glow'], cats:['brightening'], short:'Antioxidant charge for city‑stressed skin.', desc:'Vitamin C, algae patches and thermal clay help defend from pollution and visibly brighten dull tone.', highlights:['Vitamin C surge defends against city stress and dull tone', 'Thermal clay encourages circulation for instant radiance', 'Leaves complexion brighter, clearer and photo ready'], learn:'/services/brightening-facial'},
+      {slug:'essence-facelift-facial', title:'Essence Signature Facelift Facial – 50 Min', price:195, duration:'50 Min', tags:['4‑Layer','Vitamins + Enzymes'], cats:['anti','peel'], short:'Tighten, brighten, transform—fast.', desc:'Vitamin C + AHA/BHA enzymes gently resurface while hydrating to reveal radiant, firmer skin.', highlights:['Four layer enzyme system tightens and lifts fast', 'Vitamin cocktail plumps fine lines with zero downtime', 'Perfect pick before big events when you need wow'], learn:'/services/essence-signature-facelift-facial'},
+      {slug:'essence-facelift-peel', title:'Essence Signature Facelift Peel – 30 Min', price:129, duration:'30 Min', tags:['Express','Resurface'], cats:['peel'], short:'Our 30‑minute glow‑getter.', desc:'The iconic 4‑layer peel for instant brightness with zero fuss—also available as full 50‑min facial.', highlights:['Express thirty minute glow from the iconic four layer peel', 'Targets dullness and uneven tone without harsh downtime', 'Great lunch hour boost before nights out'], learn:'/services/essence-signature-facelift-peel'},
+      {slug:'custom-peel', title:'Custom Peel – 30 Min', price:'From $130', duration:'30 Min', tags:['Pigment','Lines'], cats:['peel'], short:'Results‑driven resurfacing, tailored to you.', desc:'Targets dehydration, advanced pigmentation and uneven texture. Includes peel, mask and post‑care.', highlights:['Targets pigment, fine lines or texture with a tailored formula', 'Professional peel plus mask delivers visible resurfacing', 'Includes post care guidance to extend your results'], learn:'/services/custom-peel'},
+      {slug:'firming', title:'Firming Facial – 60 Min', price:215, duration:'60 Min', tags:['Lift','Hydrate'], cats:['anti','hydrate'], short:'Visible lift + deep hydration.', desc:'Four progressive steps cleanse, hydrate, revitalize and firm for event‑ready skin.', highlights:['Multi step ritual firms, hydrates and revitalizes lax skin', 'Sculpting massage boosts lift and healthy circulation', 'Ideal before photos, parties or whenever skin looks tired'], learn:'/services/firming-facial'},
+      {slug:'hydrofacial', title:'Hydrofacial – 60 Min', price:229, duration:'60 Min', tags:['Hydro‑Dermabrasion','Collagen Support'], cats:['oxygen-hydro','brightening'], short:'Pressurized serum + oxygen glow.', desc:'Combines water/oxygen infusion to refine texture and boost radiance—great for fine lines and pigment.', highlights:['Water and oxygen infusion flushes pores and replenishes skin', 'Builds collagen support while smoothing fine lines', 'Leaves complexion glassy, plump and makeup optional'], learn:'/services/hydrofacial'},
+      {slug:'hydrating', title:'Hydrating Facial – 50 Min', price:159, duration:'50 Min', tags:['Soothe','Thermo‑Cooling'], cats:['hydrate'], short:'Immediate + lasting hydration for sensitive skin.', desc:'Calms redness while restoring moisture reserves for a plump, vibrant complexion.', highlights:['Thermo cooling formulas soothe redness and sensitivity', 'Replenishes moisture reserves for lasting comfort', 'Leaves skin dewy, calm and baby soft'], learn:'/services/hydrating-facial'},
+      {slug:'oxygen', title:'Oxygen Facial – 60 Min', price:159, duration:'60 Min', tags:['O2 Boost','Plump'], cats:['oxygen-hydro'], short:'Breathe life into tired skin.', desc:'Oxygen infusion revives dull cells, delivering deep hydration for luminous, bouncy skin.', highlights:['Pure oxygen infusion wakes up tired, dull skin', 'Deep hydration plumps fine lines and softens texture', 'Perfect prep before makeup or high definition events'], learn:'/services/oxygen-facial'},
+      {slug:'jet-plasma-facial', title:'Jet Plasma Facial – 30 Min', price:350, duration:'30 Min', tags:['No Downtime','Refine'], cats:['jet-plasma'], short:'Universal‑skin safe remodeling.', desc:'Targets fine lines, laxity, pigment or acne scarring with advanced plasma energy—back to life right away.', highlights:['Advanced plasma energy refines laxity with no downtime', 'Targets pigment, fine lines and breakout scarring', 'Universal skin safe option for rapid visible remodeling'], learn:'/services/jet-plasma-facial'},
+      {slug:'rf-mn', title:'RF Micro‑Needling Facial – 75 Min', price:399, duration:'75 Min', tags:['Tighten','Texture'], cats:['rf','anti'], short:'Rewrite texture and tone.', desc:'Radiofrequency + microneedling stimulate collagen for firmer, smoother skin with minimal downtime.', highlights:['Radiofrequency plus microneedling jump starts new collagen', 'Improves texture, scars and slackness in one service', 'Minimal downtime with maximum smoothing impact'], learn:'/services/rf-microneedling-facial'},
+      {slug:'red-carpet-collagen', title:'Red Carpet Clinical – Powerful Collagen (80 Min)', price:215, duration:'80 Min', tags:['Collagen','Hydrate'], cats:['anti','hydrate'], short:'Hydrating anti‑aging odyssey.', desc:'Strengthens, tones and softens wrinkles for a camera‑ready glow.', highlights:['Clinical collagen infusion floods skin with hydration', 'Rebuilds elasticity for bouncy, camera ready glow', 'Ideal before red carpet moments or special celebrations'], learn:'/services/red-carpet-collagen'},
+      {slug:'red-carpet-signature', title:'Red Carpet Clinical – Signature Anti‑Aging (60 Min)', price:199, duration:'60 Min', tags:['Expression Lines','Plump'], cats:['anti'], short:'Instant softening of expression lines.', desc:'Non‑invasive relaxation of expression lines with visible results after one treatment.', highlights:['Targets expression lines for softer, smoother skin', 'Plumps and hydrates without injectables', 'Perfect maintenance facial between advanced treatments'], learn:'/services/red-carpet-signature'},
+      {slug:'microderm-face', title:'Microdermabrasion Facial – 50 Min', price:125, duration:'50 Min', tags:['Resurface','Polish'], cats:['microderm'], short:'Crystal exfoliation for smoother tone.', desc:'Reduces superficial scars, fine lines, spots and large pores without harming skin integrity.', highlights:['Crystal microderm lifts dull cells for polished texture', 'Improves superficial scars, spots and fine lines', 'Leaves skin silky smooth and ready to absorb actives'], learn:'/services/microdermabrasion-facial'},
+      {slug:'microderm-chest', title:'Microdermabrasion – Chest – 45 Min', price:91, duration:'45 Min', tags:['Tone','Spot Fade'], cats:['microderm'], short:'Area‑focused smoothing for the chest.', desc:'Improves sun damage and uneven tone across the décolletage.', highlights:['Brightens sun damaged chest and decolletage', 'Evens tone and refines rough texture quickly', 'Pairs well with body treatments for all over glow'], learn:'/services/microdermabrasion-chest'},
+      {slug:'microderm-neck', title:'Microdermabrasion – Neck – 20 Min', price:59, duration:'20 Min', tags:['Smooth','Refine'], cats:['microderm'], short:'Quick neck refresh.', desc:'Targets crepey texture and uneven tone on the neck area.', highlights:['Quick polish smooths neck texture in minutes', 'Helps soften fine lines and horizontal rings', 'Great add on for comprehensive skin rejuvenation plans'], learn:'/services/microdermabrasion-neck'},
+      {slug:'teen', title:'Teen Facial – 30 Min', price:85, duration:'30 Min', tags:['Gentle','Clear'], cats:['teen'], short:'Cleanse, tone, exfoliate, moisturize—teen‑smart care.', desc:'Designed for teen skin to clear congestion and support healthy habits.', highlights:['Designed specifically for breakout prone teen complexions', 'Gentle extractions keep pores clear without irritation', 'Coaches healthy skincare habits for lasting confidence'], learn:'/services/teen-facial'},
+      {slug:'eye-contour', title:'Collagen Sublime Eye Contour – 30 Min', price:77, duration:'30 Min', tags:['Eyes','Anti‑Aging'], cats:['eyes'], short:'Mini‑vacation for your peepers.', desc:'Four‑step revitalization to soften crow’s feet and brighten under‑eyes.', highlights:['Four step ritual brightens tired under eyes fast', 'Boosts collagen to soften crow feet and creasing', 'Cooling massage depuffs for a refreshed gaze'], learn:'/services/collagen-eye-contour'},
+      {slug:'prf-under-eyes', title:'PRF Under Eyes', price:300, duration:'—', tags:['Regenerative','Dark Circles'], cats:['eyes','jet-plasma'], short:'Natural fix for hollows + crepey skin.', desc:'Your own growth factors improve thin under‑eye skin, reduce shadows and restore subtle volume with minimal downtime.', highlights:['All natural growth factors lighten dark circles', 'Improves crepey texture with gradual collagen release', 'Perfect bridge between fillers and topical eye care'], learn:'/services/prf-under-eyes'},
+      {slug:'prf-facial', title:'PRF (Platelet Rich Fibrin) Facial', price:650, duration:'—', tags:['Regenerative','Collagen'], cats:['anti','regenerative'], short:'Long‑release growth factors for deep rejuvenation.', desc:'PRF’s fibrin matrix releases growth factors longer than PRP—great for wrinkles, scars and under‑eye texture.', highlights:['Concentrated fibrin matrix delivers lasting rejuvenation', 'Smooths wrinkles, scars and uneven tone over time', 'Pairs beautifully with microneedling or laser plans'], learn:'/services/prf-facial'}
+    ];
+
+    const FACIAL_IMAGES = [
+      'assets/images/service/1200/medspa-hero (33)-1200w.webp',
+      'assets/images/service/1200/medspa-hero (34)-1200w.webp',
+      'assets/images/service/1200/medspa-hero (35)-1200w.webp',
+      'assets/images/service/1200/medspa-hero (36)-1200w.webp',
+      'assets/images/service/1200/medspa-hero (40)-1200w.webp',
+      'assets/images/service/1200/medspa-hero (44)-1200w.webp',
+      'assets/images/service/1200/medspa-hero (45)-1200w.webp',
+      'assets/images/service/1200/medspa-hero (46)-1200w.webp',
+      'assets/images/service/1200/medspa-hero (47)-1200w.webp',
+      'assets/images/service/1200/medspa-hero (48)-1200w.webp',
+      'assets/images/service/1200/medspa-hero (49)-1200w.webp',
+      'assets/images/service/1200/medspa-hero (50)-1200w.webp',
+      'assets/images/service/1200/medspa-hero (51)-1200w.webp',
+      'assets/images/service/1200/medspa-hero (52)-1200w.webp',
+      'assets/images/service/1200/medspa-hero (53)-1200w.webp',
+      'assets/images/service/1200/medspa-hero (54)-1200w.webp',
+      'assets/images/service/1200/medspa-service (13)-1200w.webp',
+      'assets/images/service/1200/medspa-service (15)-1200w.webp',
+      'assets/images/service/1200/medspa-service (16)-1200w.webp',
+      'assets/images/service/1200/medspa-service (17)-1200w.webp'
+    ];
+    FACIALS.forEach((item, idx) => { item.img = FACIAL_IMAGES[idx % FACIAL_IMAGES.length]; });
+
+    // AESTHETICS DATA
+    const AESTHETICS = [
+      {slug:'botox', title:'Botox', price:'$15 / unit', duration:'20–30 Min', tags:['Wrinkle Relief','FDA‑Approved'], cats:['injectables'], short:'Smooth lines with precise, natural‑looking results.', desc:'Target forehead lines, crow’s feet and frown lines with expert dosing for a refreshed, rested appearance.', learn:'/services/botox-chicago'},
+      {slug:'juvederm-ultra', title:'JUVÉDERM Ultra XC', price:650, duration:'30–45 Min', tags:['Lips','Nasolabial Folds'], cats:['fillers','injectables'], short:'Soft, flexible volume where you want it.', desc:'Adds subtle volume to lips and smooths moderate‑to‑severe folds for a plush, natural look.', learn:'/services/juvederm-ultra-xc'},
+      {slug:'volbella', title:'JUVÉDERM Volbella XC', price:750, duration:'30–45 Min', tags:['Lip Lines','Definition'], cats:['fillers','injectables'], short:'Silky lip refinement + line softening.', desc:'Enhance lip shape and smooth perioral lines with a refined, natural finish.', learn:'/services/juvederm-volbella'},
+      {slug:'voluma', title:'JUVÉDERM Voluma XC', price:1000, duration:'30–45 Min', tags:['Cheeks','Chin'], cats:['fillers','injectables'], short:'Lift + contour midface or chin.', desc:'Deep injection to correct age‑related volume loss in cheeks and sculpt the chin profile.', learn:'/services/juvederm-voluma'},
+      {slug:'volux', title:'JUVÉDERM Volux', price:850, duration:'30–45 Min', tags:['Jawline','Structure'], cats:['fillers','injectables'], short:'Sculpted, bone‑like definition.', desc:'Designed for lower‑face sculpting with a firmer gel for crisp jawline aesthetics.', learn:'/services/juvederm-volux'},
+      {slug:'hyaluronidase', title:'Hyaluronidase Dissolve', price:175, duration:'15–30 Min', tags:['Reset','Safety'], cats:['injectables'], short:'Unhappy with filler? Hit reset.', desc:'Safely dissolves hyaluronic acid filler to refine results or correct overfill/irregularities.', learn:'/services/hyaluronidase-dissolve'},
+      {slug:'b12', title:'B12 Shot', price:55, duration:'10 Min', tags:['Energy','Metabolism'], cats:['iv'], short:'Quick energy orchestra for your body.', desc:'B12 supports energy, mood and metabolism—fast, effective pick‑me‑up.', learn:'/services/b12-shot'},
+      {slug:'glutathione', title:'Glutathione Skin Brightening', price:79, duration:'15 Min', tags:['Antioxidant','Glow'], cats:['iv'], short:'Powerful antioxidant push for radiance.', desc:'Glutathione helps brighten tone and combat oxidative stress for a lit‑from‑within glow.', learn:'/services/glutathione-brightening'},
+      {slug:'iv-cosmetic', title:'IV Therapy – Cosmetic', price:230, duration:'30–45 Min', tags:['Skin Health','Hydration'], cats:['iv'], short:'Beauty bag for glow + wellness.', desc:'Custom blend of vitamins, minerals and antioxidants delivered IV for skin vitality and energy.', learn:'/services/iv-therapy-cosmetic'},
+      {slug:'iv-hydration', title:'IV Therapy – Hydration', price:175, duration:'30–45 Min', tags:['Replenish','Recover'], cats:['iv'], short:'Fast rehydration, feel revived.', desc:'Electrolyte‑rich hydration infusion to restore balance after travel, workouts or busy weeks.', learn:'/services/iv-therapy-hydration'},
+      {slug:'iv-recovery', title:'IV Therapy – Recovery', price:225, duration:'30–45 Min', tags:['Bounce Back','Wellness'], cats:['iv'], short:'Reboot with targeted nutrients.', desc:'Recovery‑focused infusion to reduce fatigue and support faster bounce‑back.', learn:'/services/iv-therapy-recovery'},
+      {slug:'cit-vitc', title:'Collagen Induction Therapy + Vitamin C', price:350, duration:'60–75 Min', tags:['Microneedling','Brightness'], cats:['skin-therapy'], short:'Texture + tone reset with a C‑powered boost.', desc:'Microneedling stimulates collagen while Vitamin C amplifies brightness and even tone.', learn:'/services/collagen-induction-vitamin-c'},
+      {slug:'prf-facial', title:'PRF Facial', price:650, duration:'—', tags:['Regenerative','Collagen'], cats:['regenerative'], short:'Long‑release growth factors for remodeling.', desc:'Fibrin matrix releases growth factors longer than PRP for deeper rejuvenation and healing.', learn:'/services/prf-facial'},
+      {slug:'prp-facial', title:'PRP Facial', price:550, duration:'—', tags:['Plasma','Renew'], cats:['regenerative'], short:'Your plasma, your glow.', desc:'Stimulates repair to soften lines and improve texture with your own platelet‑rich plasma.', learn:'/services/prp-facial'},
+      {slug:'vampire', title:'The Vampire Facial', price:'From $999', duration:'—', tags:['Signature Plan','Lift'], cats:['regenerative'], short:'Personalized non‑surgical facelift.', desc:'Tighten, lift and sculpt with bespoke PRP/PRF protocols—perfect pre‑event transformation.', learn:'/services/vampire-facial'},
+      {slug:'hair-prp', title:'Hair Restoration (PRP)', price:'From $499', duration:'—', tags:['Follicle Stim','Non‑Surgical'], cats:['regenerative'], short:'Boost thinning hair naturally.', desc:'Concentrated growth factors help awaken follicles and support thicker, fuller hair.', learn:'/services/hair-restoration-prp'},
+      {slug:'lipo-sculpt', title:'Lipo Sculpt', price:'From $300', duration:'—', tags:['Body Contour','Define'], cats:['contouring'], short:'Spot‑treat stubborn areas, no surgery.', desc:'Targeted sculpting approach to complement your fitness progress and refine contours.', learn:'/services/lipo-sculpt'},
+      {slug:'meso-bright', title:'Meso Brightening', price:'From $125', duration:'—', tags:['Pigment','Glow'], cats:['meso'], short:'Serum‑infused microneedling for even tone.', desc:'Targets discoloration and uneven tone with customized brightening cocktails.', learn:'/services/meso-brightening'},
+      {slug:'meso-contour', title:'Meso Contour', price:'From $125', duration:'—', tags:['Define','Refine'], cats:['meso'], short:'Complement weight‑loss with fine sculpting.', desc:'Micro‑injections + mesotherapy to support definition in stubborn spots.', learn:'/services/meso-contour'},
+      {slug:'meso-firm', title:'Meso Firm', price:'From $125', duration:'—', tags:['Tighten','Elasticity'], cats:['meso'], short:'Bounce‑back booster for laxity.', desc:'Firming complexes enhance elasticity for a smoother, springier feel.', learn:'/services/meso-firm'},
+      {slug:'meso-glow', title:'Meso Glow', price:'From $125', duration:'—', tags:['Radiance','Nourish'], cats:['meso'], short:'Lux glow with nutrient‑rich serums.', desc:'A pampering mesotherapy ritual to restore luminosity and hydration.', learn:'/services/meso-glow'},
+      {slug:'meso-lift', title:'Meso Lift', price:'From $125', duration:'—', tags:['Lift','Tone'], cats:['meso'], short:'Smoother, lifted look—no downtime.', desc:'Facial mesotherapy to stimulate collagen and refine contours for a subtle lift.', learn:'/services/meso-lift'}
+    ];
+
+    // MASSAGE DATA
+    const MASSAGE = [
+      {slug:'swedish-50', title:'Swedish Massage – 50 Min', price:109, duration:'50 Min', tags:['Relax','Classic'], cats:['swedish'], short:'Soothing strokes to melt daily stress.', desc:'Full‑body relaxation with flowing techniques to ease tension and boost circulation.', learn:'/services/swedish-massage-50'},
+      {slug:'swedish-80', title:'Swedish Massage – 80 Min', price:145, duration:'80 Min', tags:['Relax','Deeper Reset'], cats:['swedish'], short:'Extra time for head‑to‑toe calm.', desc:'Extended session to fully unwind and restore balance.', learn:'/services/swedish-massage-80'},
+      {slug:'deep-50', title:'Restorative Deep Tissue – 50 Min', price:130, duration:'50 Min', tags:['Knots','Recovery'], cats:['deep'], short:'Serious muscle intervention.', desc:'Targets chronic tension and adhesions with slower, deeper techniques.', learn:'/services/deep-tissue-50'},
+      {slug:'deep-80', title:'Restorative Deep Tissue – 80 Min', price:169, duration:'80 Min', tags:['Knots','Recovery'], cats:['deep'], short:'More time, more relief.', desc:'Focus on problem areas to restore mobility and ease.', learn:'/services/deep-tissue-80'},
+      {slug:'hot-50', title:'Hot Stone – 50 Min', price:160, duration:'50 Min', tags:['Heat Therapy','Melt'], cats:['hot-stone'], short:'Warm stones melt muscle stiffness.', desc:'Thermal bliss that softens tight muscles and calms the nervous system.', learn:'/services/hot-stone-50'},
+      {slug:'hot-80', title:'Hot Stone – 80 Min', price:195, duration:'80 Min', tags:['Heat Therapy','Deeper Melt'], cats:['hot-stone'], short:'Longer escape, deeper release.', desc:'Amplified relaxation with extended stone placement and massage.', learn:'/services/hot-stone-80'},
+      {slug:'bamboo-50', title:'Bamboo Massage – 50 Min', price:125, duration:'50 Min', tags:['Warm Tools','Circulation'], cats:['bamboo'], short:'Warm bamboo glides for a digital detox.', desc:'Dynamic pressure and warmth to relieve tension and rejuvenate.', learn:'/services/bamboo-50'},
+      {slug:'bamboo-80', title:'Bamboo Massage – 80 Min', price:165, duration:'80 Min', tags:['Warm Tools','Circulation'], cats:['bamboo'], short:'Longer session, deeper flow.', desc:'Extended bamboo techniques for full‑body renewal.', learn:'/services/bamboo-80'},
+      {slug:'cupping-50', title:'Cupping Massage – 50 Min', price:109, duration:'50 Min', tags:['Decompress','Circulation'], cats:['cupping'], short:'Gentle suction to lift and release.', desc:'Silicone cups improve circulation and ease fascial restrictions.', learn:'/services/cupping-50'},
+      {slug:'cupping-80', title:'Cupping Massage – 80 Min', price:145, duration:'80 Min', tags:['Decompress','Circulation'], cats:['cupping'], short:'More time to unwind + recover.', desc:'Focused decompression for stubborn tightness.', learn:'/services/cupping-80'},
+      {slug:'prenatal-50', title:'Prenatal Massage – 50 Min', price:159, duration:'50 Min', tags:['Mama Safe','Comfort'], cats:['prenatal'], short:'Targeted relief during pregnancy.', desc:'Side‑lying supports + gentle pressure to ease aches and promote sleep.', learn:'/services/prenatal-50'},
+      {slug:'prenatal-80', title:'Prenatal Massage – 80 Min', price:199, duration:'80 Min', tags:['Mama Safe','Comfort'], cats:['prenatal'], short:'Extra comfort + circulation.', desc:'Extended relief for low back, hips and legs.', learn:'/services/prenatal-80'},
+      {slug:'athlete-50', title:"The Athlete's Massage – 50 Min", price:126, duration:'50 Min', tags:['Performance','Mobility'], cats:['athlete'], short:'Pre‑hab meets recovery.', desc:'Targets sport‑specific groups to enhance range of motion and speed recovery.', learn:'/services/athlete-50'},
+      {slug:'athlete-80', title:"The Athlete's Massage – 80 Min", price:165, duration:'80 Min', tags:['Performance','Mobility'], cats:['athlete'], short:'Extended mobility work.', desc:'Deeper focus on hips, hamstrings, back and shoulders.', learn:'/services/athlete-80'},
+      {slug:'thai-50', title:'Thai Herbal – 50 Min', price:166, duration:'50 Min', tags:['Herbal Compress','Rhythm'], cats:['thai'], short:'Aromatics + rhythmic compression.', desc:'Warm herbal compresses relax muscles and harmonize the body.', learn:'/services/thai-herbal-50'},
+      {slug:'reflex-30', title:'Foot Reflexology – 30 Min', price:75, duration:'30 Min', tags:['Reset','Sleep'], cats:['reflexology'], short:'De‑stress via pressure points.', desc:'Stimulates nerve function, circulation and deep relaxation.', learn:'/services/reflexology-30'},
+      {slug:'reflex-45', title:'Foot Reflexology – 45 Min', price:95, duration:'45 Min', tags:['Reset','Sleep'], cats:['reflexology'], short:'Extra time for total calm.', desc:'Extended session for detox and rest.', learn:'/services/reflexology-45'},
+      {slug:'face-4d', title:'4D Face Lifting Massage – 60 Min', price:195, duration:'60 Min', tags:['Lift','Tone'], cats:['face-lifting'], short:'Non‑invasive facial toning ritual.', desc:'Targets multiple layers for lifted contours and revived glow.', learn:'/services/4d-face-lifting-massage'},
+      {slug:'gua-sha', title:'Face Lifting Gua Sha & Massage – 50 Min', price:125, duration:'50 Min', tags:['Sculpt','Lymph'], cats:['face-lifting'], short:'Holistic sculpt + radiance.', desc:'Gua Sha + massage boosts lymphatic flow and refines contours.', learn:'/services/face-gua-sha-massage'},
+      {slug:'face-lymph', title:'Face Lymphatic Drainage – 30 Min', price:95, duration:'30 Min', tags:['De‑puff','Detox'], cats:['face-lifting'], short:'Refresh, depuff, glow.', desc:'Gentle lymph stimulation to reduce fluid retention and brighten.', learn:'/services/face-lymphatic-drainage'},
+      {slug:'couples-swedish-50', title:'Couples Swedish – 50 Min', price:318, duration:'50 Min', tags:['Shared','Relax'], cats:['couples','swedish'], short:'A blissful shared escape.', desc:'Side‑by‑side Swedish experience; ask about Bamboo Suite + wine platter upgrades.', learn:'/services/couples-swedish-50'},
+      {slug:'couples-deep-80', title:'Couples Deep Tissue – 80 Min', price:438, duration:'80 Min', tags:['Shared','Recovery'], cats:['couples','deep'], short:'Indulgent, restorative duet.', desc:'Extended deep tissue for two; elevate with suite + wine platter.', learn:'/services/couples-deep-80'}
+    ];
+
+    // BODY DATA
+    const BODY = [
+      {slug:'back-facial', title:'Back Facial – 50 Min', price:179, duration:'50 Min', tags:['Blemish Care','Clarify'], cats:['back-care'], short:'Deep cleanse + detox for your back.', desc:'Targets congestion with cleanse, exfoliation, extractions and sulfur mask for a clearer, smoother back.', learn:'/services/back-facial'},
+      {slug:'back-micro', title:'Back Microdermabrasion – 50 Min', price:115, duration:'50 Min', tags:['Resurface','Polish'], cats:['microderm'], short:'Crystal polish for silky smooth skin.', desc:'Pressure‑controlled crystals lift dull cells and refine texture without damaging integrity.', learn:'/services/back-microdermabrasion'},
+      {slug:'back-stim-peel', title:'Back Stimulator Peel – 30 Min', price:149, duration:'30 Min', tags:['No Downtime','Brighten'], cats:['peel'], short:'Entry‑level peel with visible glow.', desc:'Boost cell turnover, soften spots and sun damage with a zero‑downtime resurfacer.', learn:'/services/back-stimulator-peel'},
+      {slug:'body-scrub', title:'Royal Fijian Ritual Body Scrub – 85 Min', price:189, duration:'85 Min', tags:['Exfoliate','Hydrate'], cats:['scrub'], short:'Organic sugar + honey masque bliss.', desc:'Coconut milk, drift‑nut oils and warm stone massage leave skin nourished, soft and radiant.', learn:'/services/royal-fijian-ritual'},
+      {slug:'jp-face-neck', title:'Jet Plasma – Face & Neck – 50 Min', price:450, duration:'50 Min', tags:['Tighten','No Downtime'], cats:['jet-plasma'], short:'Advanced plasma remodeling for lift.', desc:'Targets fine lines and laxity across face and neck with zero downtime and universal skin safety.', learn:'/services/jet-plasma-face-neck'},
+      {slug:'jp-neck', title:'Jet Plasma – Neck Only – 20 Min', price:250, duration:'20 Min', tags:['Firm','Smooth'], cats:['jet-plasma'], short:'Neck refinement in a flash.', desc:'Focused neck session to address crepey texture and laxity.', learn:'/services/jet-plasma-neck'},
+      {slug:'jp-decollete', title:'Jet Plasma – Décolleté – 30 Min', price:109, duration:'30 Min', tags:['Sun Damage','Tone'], cats:['jet-plasma'], short:'Even out chest tone + texture.', desc:'Helps reduce sun spots and visible aging on the chest area.', learn:'/services/jet-plasma-decollete'},
+      {slug:'jp-scalp', title:'Jet Plasma – Scalp – 30 Min', price:300, duration:'30 Min', tags:['Hair Support','Balance'], cats:['jet-plasma','scalp'], short:'Support scalp health for fuller hair.', desc:'Targets oily/dry scalp and dandruff; complements hair restoration plans.', learn:'/services/jet-plasma-scalp'},
+      {slug:'jp-hand', title:'Jet Plasma – Hands – 20 Min', price:250, duration:'20 Min', tags:['Sun Damage','Smooth'], cats:['jet-plasma'], short:'Rewind aging on hardworking hands.', desc:'Improves texture, tone and fine lines on the hands.', learn:'/services/jet-plasma-hands'},
+      {slug:'jp-arm', title:'Jet Plasma – Arms – 30 Min', price:295, duration:'30 Min', tags:['Crepey Skin','Tighten'], cats:['jet-plasma'], short:'Arm firming without downtime.', desc:'Addresses crepey texture and mild laxity for a smoother look.', learn:'/services/jet-plasma-arms'},
+      {slug:'jp-breast', title:'Jet Plasma – Breast – 40 Min', price:400, duration:'40 Min', tags:['Firm','Smooth'], cats:['jet-plasma'], short:'Targeted tightening session.', desc:'Refines fine lines and laxity across the decolletage/breast area.', learn:'/services/jet-plasma-breast'},
+      {slug:'jp-stomach', title:'Jet Plasma – Stomach – 30 Min', price:350, duration:'30 Min', tags:['Stretch Marks','Texture'], cats:['jet-plasma'], short:'Post‑pregnancy or weight‑loss help.', desc:'Improves stretch marks, scarring and overall texture on the abdomen.', learn:'/services/jet-plasma-stomach'},
+      {slug:'jp-legs', title:'Jet Plasma – Legs & Knee – 50 Min', price:500, duration:'50 Min', tags:['Crepey Skin','Elasticity'], cats:['jet-plasma'], short:'Leg firming for smoother stride.', desc:'Addresses crepey knee/leg skin and supports elasticity.', learn:'/services/jet-plasma-legs-knee'}
+    ];
+
+    // Helpers
+    function priceText(v){return typeof v==='number'?`$${v}`:v}
+    function pillTags(tags){return tags.map(t=>`<span class="px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 text-xs">${t}</span>`).join(' ')}
+    function highlightList(points){if(!points||!points.length)return '';return `<ul class="mt-4 space-y-2 text-sm text-apple-gray">${points.map(p=>`<li class="flex items-start gap-2"><span class="mt-1 h-2 w-2 rounded-full bg-apple-blue"></span><span>${p}</span></li>`).join('')}</ul>`}
+    function cardTemplate(item){
+      const desc=item.desc||item.short||'';
+      return `<article data-cats="${item.cats.join(',')}" class="group bg-white rounded-3xl shadow hover-lift smooth-transition overflow-hidden border border-gray-100 flex flex-col">\
+        ${item.img?`<div class="relative -mx-6 -mt-6 mb-5 h-48 overflow-hidden"><img src="${item.img}" alt="${item.title}" class="h-full w-full object-cover" loading="lazy"/></div>`:''}\
+        <div class="p-6 flex flex-col flex-1">\
+          <div class="flex items-start justify-between gap-4">\
+            <h3 class="text-xl font-semibold">${item.title}</h3>\
+            <div class="service-icon apple-gradient text-white"><svg class="w-6 h-6" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>\
+          </div>\
+          <div class="mt-2 text-apple-light-gray text-sm">${item.duration||''}</div>\
+          <div class="mt-3 flex flex-wrap gap-2">${pillTags(item.tags||[])}</div>\
+          <p class="mt-4 text-sm leading-relaxed text-apple-gray">${desc}</p>\
+          ${highlightList(item.highlights)}\
+          <div class="mt-6 flex items-center justify-between gap-3">\
+            <div class="text-apple-blue font-semibold">${priceText(item.price)}</div>\
+            <a href="${item.learn}" class="px-3 py-2 rounded-full border border-apple-gray text-apple-gray text-sm hover:bg-apple-gray hover:text-white smooth-transition">Learn More</a>\
+          </div>\
+          <a href="${BOOK_URL}" class="mt-4 w-full text-center bg-apple-blue text-white py-2.5 rounded-full hover:bg-blue-600 smooth-transition">Book Now</a>\
+        </div>\
+      </article>`
+    }
+
+    function renderGrid(el, items){
+      el.innerHTML = items.map(cardTemplate).join('')
+    }
+
+    const gridF=document.getElementById('gridFacials');
+    const gridA=document.getElementById('gridAesthetics');
+    const gridM=document.getElementById('gridMassage');
+    const gridB=document.getElementById('gridBody');
+    renderGrid(gridF,FACIALS); renderGrid(gridA,AESTHETICS); renderGrid(gridM,MASSAGE); renderGrid(gridB,BODY);
+
+    const heroSlides = Array.from(document.querySelectorAll('#heroSlider .hero-slide'))
+    const heroIndicators = Array.from(document.querySelectorAll('#heroIndicators [data-hero-index]'))
+    if(heroSlides.length){
+      let heroIndex = 0
+      const HERO_INTERVAL = 7000
+      function updateHero(nextIndex){
+        heroSlides.forEach((slide, idx)=>{slide.classList.toggle('is-active', idx === nextIndex)})
+        heroIndicators.forEach((btn, idx)=>{
+          if(idx === nextIndex){
+            btn.classList.add('w-8','bg-white/90')
+            btn.classList.remove('w-4','bg-white/50')
+          }else{
+            btn.classList.add('w-4','bg-white/50')
+            btn.classList.remove('w-8','bg-white/90')
+          }
+        })
+        heroIndex = nextIndex
+      }
+      function nextHero(direction = 1){
+        const next = (heroIndex + direction + heroSlides.length) % heroSlides.length
+        updateHero(next)
+      }
+      let heroTimer = setInterval(()=>nextHero(1), HERO_INTERVAL)
+      heroIndicators.forEach((btn)=>{
+        btn.addEventListener('click',()=>{
+          const idx = Number(btn.dataset.heroIndex || 0)
+          updateHero(idx)
+          clearInterval(heroTimer)
+          heroTimer = setInterval(()=>nextHero(1), HERO_INTERVAL)
+        })
+      })
+      document.addEventListener('visibilitychange',()=>{
+        if(document.hidden){
+          clearInterval(heroTimer)
+        }else{
+          clearInterval(heroTimer)
+          heroTimer = setInterval(()=>nextHero(1), HERO_INTERVAL)
+        }
+      })
+      updateHero(0)
+    }
+
+    // Filters
+    document.querySelectorAll('[data-filter-f]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-filter-f]').forEach(b=>b.classList.remove('bg-white'));btn.classList.add('bg-white');const k=btn.dataset.filterF;if(k==='all')return renderGrid(gridF,FACIALS);renderGrid(gridF,FACIALS.filter(i=>i.cats.includes(k)))}))
+    document.querySelectorAll('[data-filter-a]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-filter-a]').forEach(b=>b.classList.remove('bg-white'));btn.classList.add('bg-white');const k=btn.dataset.filterA;if(k==='all')return renderGrid(gridA,AESTHETICS);renderGrid(gridA,AESTHETICS.filter(i=>i.cats.includes(k)))}))
+    document.querySelectorAll('[data-filter-m]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-filter-m]').forEach(b=>b.classList.remove('bg-white'));btn.classList.add('bg-white');const k=btn.dataset.filterM;if(k==='all')return renderGrid(gridM,MASSAGE);renderGrid(gridM,MASSAGE.filter(i=>i.cats.includes(k)))}))
+    document.querySelectorAll('[data-filter-b]').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('[data-filter-b]').forEach(b=>b.classList.remove('bg-white'));btn.classList.add('bg-white');const k=btn.dataset.filterB;if(k==='all')return renderGrid(gridB,BODY);renderGrid(gridB,BODY.filter(i=>i.cats.includes(k)))}))
+
+    // Tabs
+    const tabF=document.getElementById('tabFacials');
+    const tabA=document.getElementById('tabAesthetics');
+    const tabM=document.getElementById('tabMassage');
+    const tabB=document.getElementById('tabBody');
+    const secF=document.getElementById('facials');
+    const secA=document.getElementById('aesthetics');
+    const secM=document.getElementById('massage');
+    const secB=document.getElementById('body');
+    function showF(){secF.classList.remove('hidden');secA.classList.add('hidden');secM.classList.add('hidden');secB.classList.add('hidden');tabF.classList.add('bg-white');[tabA,tabM,tabB].forEach(t=>t.classList.add('text-apple-light-gray'))}
+    function showA(){secA.classList.remove('hidden');secF.classList.add('hidden');secM.classList.add('hidden');secB.classList.add('hidden');tabA.classList.remove('text-apple-light-gray');[tabF,tabM,tabB].forEach(t=>t.classList.add('text-apple-light-gray'))}
+    function showM(){secM.classList.remove('hidden');secF.classList.add('hidden');secA.classList.add('hidden');secB.classList.add('hidden');tabM.classList.remove('text-apple-light-gray');[tabF,tabA,tabB].forEach(t=>t.classList.add('text-apple-light-gray'))}
+    function showB(){secB.classList.remove('hidden');secF.classList.add('hidden');secA.classList.add('hidden');secM.classList.add('hidden');tabB.classList.remove('text-apple-light-gray');[tabF,tabA,tabM].forEach(t=>t.classList.add('text-apple-light-gray'))}
+    tabF.addEventListener('click',showF);tabA.addEventListener('click',showA);tabM.addEventListener('click',showM);tabB.addEventListener('click',showB);
+
+    // Hash routing
+    function routeFromHash(){
+      const h=location.hash;
+      if(h.includes('aesthetics')) return showA();
+      if(h.includes('massage')) return showM();
+      if(h.includes('body')) return showB();
+      return showF();
+    }
+    window.addEventListener('hashchange',routeFromHash);routeFromHash();
+
+    // Modal
+    const modal=document.getElementById('detailModal');
+    const closeModalBtn=document.getElementById('closeModal');
+    const modalTitle=document.getElementById('modalTitle');
+    const modalMeta=document.getElementById('modalMeta');
+    const modalDesc=document.getElementById('modalDesc');
+    const modalBook=document.getElementById('modalBook');
+    const modalLearn=document.getElementById('modalLearn');
+    function openModal(item){
+      modalTitle.textContent=item.title; modalMeta.textContent=`${item.duration||''} • ${(item.tags||[]).join(' · ')}`; modalDesc.textContent=item.desc||''; modalBook.href=BOOK_URL; modalLearn.href=item.learn||'#'; modal.classList.remove('hidden'); modal.classList.add('flex');
+    }
+    function closeModal(){modal.classList.add('hidden');modal.classList.remove('flex')}
+    closeModalBtn.addEventListener('click',closeModal); modal.addEventListener('click',e=>{if(e.target===modal) closeModal()});
+  </script>
+
+  <footer class="mt-24 bg-apple-gray text-white">
+    <div class="max-w-7xl mx-auto px-6 py-16 grid gap-10 lg:grid-cols-4">
+      <div class="space-y-4">
+        <h4 class="text-2xl font-semibold">Essence Medspa</h4>
+        <p class="text-white/70 text-sm leading-relaxed">Where clinical innovation meets the art of relaxation. Personalized facial, body and regenerative experiences designed to reveal luminous confidence.</p>
+        <div class="flex gap-3 text-white/60">
+          <a href="https://www.instagram.com" class="hover:text-white smooth-transition" aria-label="Instagram">Instagram</a>
+          <a href="https://www.facebook.com" class="hover:text-white smooth-transition" aria-label="Facebook">Facebook</a>
+          <a href="https://www.tiktok.com" class="hover:text-white smooth-transition" aria-label="TikTok">TikTok</a>
+        </div>
+      </div>
+      <div class="space-y-4">
+        <h5 class="text-lg font-medium">Visit Us</h5>
+        <p class="text-white/70 text-sm">6413 N. Kinzua Avenue, <br/>Chicago, IL 60646
+        <p class="text-white/70 text-sm"><span class="font-medium text-white">Hours</span><br/>Mon-Thu: 9am - 7pm<br/>Fri-Sat: 9am - 6pm<br/>Sun: By Appointment</p>
+      </div>
+      <div class="space-y-4">
+        <h5 class="text-lg font-medium">Quick Links</h5>
+        <ul class="space-y-2 text-sm text-white/70">
+          <li><a href="#home" class="hover:text-white smooth-transition">Home</a></li>
+          <li><a href="#facials" class="hover:text-white smooth-transition">Facial Treatments</a></li>
+          <li><a href="#aesthetics" class="hover:text-white smooth-transition">Advanced Aesthetics</a></li>
+          <li><a href="#massage" class="hover:text-white smooth-transition">Massage Therapy</a></li>
+          <li><a href="#body" class="hover:text-white smooth-transition">Body Treatments</a></li>
+          <li><a href="https://www.vagaro.com/essencemedspaandwellnesscenter/book-now" class="hover:text-white smooth-transition">Book Now</a></li>
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <h5 class="text-lg font-medium">Stay In The Glow</h5>
+        <p class="text-white/70 text-sm">Be the first to know about new technologies, seasonal rituals and VIP events.</p>
+        <form class="flex flex-col sm:flex-row gap-3" onsubmit="event.preventDefault(); alert('Thank you for joining the Glow List!');">
+          <input type="email" required placeholder="Email address" class="flex-1 rounded-full border border-white/30 bg-white/10 px-4 py-3 text-sm placeholder-white/60 focus:outline-none focus:border-white"/>
+          <button type="submit" class="rounded-full bg-white px-6 py-3 text-sm font-medium text-apple-gray hover:bg-white/90 smooth-transition">Sign Up</button>
+        </form>
+        <p class="text-xs text-white/50">By subscribing you agree to receive curated updates. Unsubscribe anytime.</p>
+      </div>
+    </div>
+    <div class="border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50">
+        <p>&copy; 2025 Essence Medspa. All rights reserved.</p>
+        <div class="flex gap-4">
+          <a href="#home" class="hover:text-white smooth-transition">Privacy</a>
+          <a href="#home" class="hover:text-white smooth-transition">Terms</a>
+          <a href="mailto:hello@luxemedspa.com" class="hover:text-white smooth-transition">hello@luxemedspa.com</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
